@@ -1,5 +1,5 @@
 ---
-image: "buluma/github-action-molecule:4.0.6"
+image: "buluma/github-action-molecule:4.0.9"
 
 services:
   - docker:dind
@@ -9,8 +9,11 @@ variables:
   PY_COLORS: 1
 
 molecule:
+  stage: build
+  allow_failure: true
   script:
-    - image=${image} tag=${tag} molecule test
+    - if [ -f tox.ini ] ; then tox ; fi
+    - if [ ! -f tox.ini ] ; then molecule test ; fi
   rules:
     - if: $CI_COMMIT_REF_NAME == "master"
   retry: 1
@@ -18,10 +21,15 @@ molecule:
     matrix:
       - image: "enterpriselinux"
         tag: "7"
+      - image: "enterpriselinux"
+        tag: "latest"
 
 testing:
+  stage: test
+  needs: []
   script:
-    - image=${image} tag=${tag} molecule test
+    - if [ -f tox.ini ] ; then tox ; fi
+    - if [ ! -f tox.ini ] ; then molecule test ; fi
   rules:
     - if: $CI_COMMIT_REF_NAME == "testing"
   retry: 1
@@ -29,27 +37,5 @@ testing:
     matrix:
       - image: "enterpriselinux"
         tag: "7"
-
-role_testing:
-  script:
-    - image=${image} tag=${tag} ansible-galaxy install buluma.ad_auth
-  rules:
-    - if: $CI_COMMIT_REF_NAME == "testing"
-  retry: 1
-  parallel:
-    matrix:
       - image: "enterpriselinux"
-        tag: "7"
-
-galaxy:
-  script:
-    - ansible-galaxy role info buluma.ad_auth
-
-role_testing_live:
-  script:
-    - image=${image} tag=${tag} ansible-galaxy install buluma.ad_auth
-  retry: 1
-  parallel:
-    matrix:
-      - image: "enterpriselinux"
-        tag: "7"
+        tag: "latest"

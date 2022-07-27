@@ -2,9 +2,9 @@
 
 Bind a system to Active Directory.
 
-|GitHub|GitLab|Quality|Downloads|Version|
-|------|------|-------|---------|-------|
-|[![github](https://github.com/buluma/ansible-role-ad_auth/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-ad_auth/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-ad_auth/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-ad_auth)|[![quality](https://img.shields.io/ansible/quality/)](https://galaxy.ansible.com/buluma/ad_auth)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/buluma/ad_auth)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-ad_auth.svg)](https://github.com/buluma/ansible-role-ad_auth/releases/)|
+|GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
+|------|------|-------|---------|-------|------|-------------|
+|[![github](https://github.com/buluma/ansible-role-ad_auth/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-ad_auth/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-ad_auth/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-ad_auth)|[![quality](https://img.shields.io/ansible/quality/58349)](https://galaxy.ansible.com/buluma/ad_auth)|[![downloads](https://img.shields.io/ansible/role/d/58349)](https://galaxy.ansible.com/buluma/ad_auth)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-ad_auth.svg)](https://github.com/buluma/ansible-role-ad_auth/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-ad_auth.svg)](https://github.com/buluma/ansible-role-ad_auth/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-ad_auth.svg)](https://github.com/buluma/ansible-role-ad_auth/pulls/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -51,19 +51,19 @@ The default values for the variables are set in `defaults/main.yml`:
 ---
 # defaults file for ad_auth
 
-# The username to register to AD, for example: "bind_user"
+# The username to register to AD, for example: "bind_user".
 ad_auth_registration_username: "unset"
 
-# The password to register to AD, for example: "MyPaSsWoRd"
+# The password to register to AD, for example: "MyPaSsWoRd".
 ad_auth_registration_password: "unset"
 
-# The OU to search in, for example: "ou=Nerds,ou=Staff"
+# The OU to search in, for example: "ou=Nerds,ou=Staff".
 ad_auth_ou: "unset"
 
-# The server to bind to, for example: "ad.example.com"
+# The server to bind to, for example: "ad.example.com".
 ad_auth_server: "unset"
 
-# The domain to use for SSSD configuration, for example: "example.com"
+# The domain to use for SSSD configuration, for example: "example.com".
 ad_auth_domain: "usnet.local"
 
 # Should this role try to bind to the AD server?
@@ -93,7 +93,7 @@ The following roles are used to prepare a system. You can prepare your system in
 
 ## [Context](#context)
 
-This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://buluma.co.ke/) for further information.
+This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://buluma.github.io/) for further information.
 
 Here is an overview of related roles:
 
@@ -105,7 +105,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/b
 
 |container|tags|
 |---------|----|
-|el|7|
+|el|all|
 
 The minimum version of Ansible required is 2.10, tests have been done to:
 
@@ -117,10 +117,14 @@ The minimum version of Ansible required is 2.10, tests have been done to:
 
 If you find issues, please register them in [GitHub](https://github.com/buluma/ansible-role-ad_auth/issues)
 
+## [Changelog](#changelog)
+
+[Role History](https://github.com/buluma/ansible-role-ad_auth/blob/master/CHANGELOG.md)
+
 ## [License](#license)
 
 Apache-2.0
 
 ## [Author Information](#author-information)
 
-[Robert de Bock](https://buluma.github.io/)
+[buluma](https://buluma.github.io/)
