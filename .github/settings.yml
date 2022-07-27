@@ -1,0 +1,8 @@
+---
+#
+# Ansible managed
+#
+repository:
+  description: Bind a system to Active Directory.
+  homepage: https://buluma.github.io/
+  topics: adauth, activedirectory, authentication, ansible, molecule, tox, playbook, hacktoberfest

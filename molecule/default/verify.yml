@@ -1,0 +1,22 @@
+---
+- name: Verify
+  hosts: all
+  become: yes
+  gather_facts: no
+
+  tasks:
+    - name: check adcli
+      command: /usr/sbin/adcli --help
+
+    - name: check realmd
+      command: /usr/sbin/realm list
+
+    - name: check samba common tools
+      command: /usr/bin/net --version
+
+    - name: check pam_krb5.so
+      ansible.builtin.stat:
+        path: /usr/lib64/security/pam_krb5.so
+      register: ad_auth_pam_krb5_so
+      failed_when:
+        - not ad_auth_pam_krb5_so.stat.exists | bool

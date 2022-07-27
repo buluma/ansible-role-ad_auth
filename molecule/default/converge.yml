@@ -1,0 +1,17 @@
+---
+- name: converge
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  roles:
+    - role: ansible-role-ad_auth
+      ad_auth_registration_username: my_username
+      ad_auth_registration_password: my_password
+      ad_auth_ou: ou=Nerds,ou=Staff
+      ad_auth_server: my_server.example.com
+      ad_auth_domain: my_domain.local
+      ad_auth_join: no
+      ad_auth_simple_allow_users:
+        - my_user_1
+        - my_user_2
