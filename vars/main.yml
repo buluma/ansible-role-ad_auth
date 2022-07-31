@@ -2,11 +2,11 @@
 # vars file for ad_auth
 
 _ad_auth_packages:
-  Default:
+  default:
     - adcli
     - oddjob
     - oddjob-mkhomedir
-    - pam_krb5
+    - krb5-workstation
     - realmd
     - samba-common
     - samba-common-tools
