@@ -2,6 +2,15 @@
 # vars file for ad_auth
 
 _ad_auth_packages:
+  Default:
+    - adcli
+    - oddjob
+    - oddjob-mkhomedir
+    - pam_krb5
+    - realmd
+    - samba-common
+    - samba-common-tools
+    - sssd
   RedHat-7:
     - adcli
     - oddjob

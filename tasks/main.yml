@@ -14,8 +14,6 @@
     state: present
   notify:
     - restart realmd
-  # tags:
-  #   - molecule-notest
 
 # - debug: var=ansible_facts['distribution']
 # - debug: var=ansible_facts['distribution_major_version']
@@ -79,10 +77,10 @@
 #     name: "{{ ad_auth_pip_packages }}"
 #     state: present
 #     extra_args: --ignore-installed
-    # when:
-    #   - packages['pexpect'] is not defined or
-    #     packages['pexpect'][0].version is version('3.3', '<=')
-    #   - "'pexpect' not in ad_auth_pip_package_info.stdout_lines"
+#     when:
+#       - packages['pexpect'] is not defined or
+#         packages['pexpect'][0].version is version('3.3', '<=')
+#       - "'pexpect' not in ad_auth_pip_package_info.stdout_lines"
 
 # - debug: var=ad_auth_pip_package_info
 # - fail:
