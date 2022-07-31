@@ -5,6 +5,8 @@
   ansible.builtin.import_tasks: assert.yml
   run_once: yes
   delegate_to: localhost
+  # tags:
+  #   - molecule-notest
 
 - name: install packages
   ansible.builtin.package:
@@ -12,33 +14,78 @@
     state: present
   notify:
     - restart realmd
+  # tags:
+  #   - molecule-notest
 
-- name: gather package facts
-  ansible.builtin.package_facts:
+# - debug: var=ansible_facts['distribution']
+# - debug: var=ansible_facts['distribution_major_version']
 
-- name: gather pip packages (CentOS-7)
-  ansible.builtin.command: pip list
-  check_mode: no
-  changed_when: no
-  register: ad_auth_pip_package_info
-  when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7")
+# - fail:
+# - name: gather package facts
+#   ansible.builtin.package_facts:
 
-- name: gather pip packages (CentOS-8)
-  ansible.builtin.command: pip3 list
-  check_mode: no
-  changed_when: no
-  register: ad_auth_pip_package_info
-  when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "8")
+# - name: gather pip packages (CentOS-7)
+#   ansible.builtin.command: pip list
+#   check_mode: no
+#   changed_when: no
+#   register: ad_auth_pip_package_info
+#   when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7")
+#
+# - name: gather pip packages (CentOS-8)
+#   ansible.builtin.command: pip3 list
+#   check_mode: no
+#   changed_when: no
+#   register: ad_auth_pip_package_info
+#   when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "8")
 
-- name: install pip packages
-  ansible.builtin.pip:
-    name: "{{ ad_auth_pip_packages }}"
-    state: present
-    extra_args: --ignore-installed
-  when:
-    - packages['pexpect'] is not defined or
-      packages['pexpect'][0].version is version('3.3', '<=')
-    - "'pexpect' not in ad_auth_pip_package_info.stdout"
+# - name: gather pip packages (OracleLinux-7)
+#   ansible.builtin.command: pip list
+#   check_mode: no
+#   changed_when: no
+#   register: ad_auth_pip_package_info_7
+#   when: (ansible_facts['distribution'] == "OracleLinux" and ansible_facts['distribution_major_version'] == "7")
+#
+# # - debug: var=ad_auth_pip_package_info_7
+#
+# - name: gather pip packages (OracleLinux-8)
+#   ansible.builtin.command: pip3 list
+#   check_mode: no
+#   changed_when: no
+#   register: ad_auth_pip_package_info_8
+#   when: (ansible_facts['distribution'] == "OracleLinux" and ansible_facts['distribution_major_version'] == "8")
+#
+# # - debug: var=ad_auth_pip_package_info_8
+#
+# - name: gather pip packages (OracleLinux-9)
+#   ansible.builtin.command: pip3 list
+#   check_mode: no
+#   changed_when: no
+#   register: ad_auth_pip_package_info_9
+#   when: (ansible_facts['distribution'] == "OracleLinux" and ansible_facts['distribution_major_version'] == "9")
+
+# - debug: var=ad_auth_pip_package_info_9
+
+# - name: install pexpect
+#   pip:
+#     name: pexpect
+#   become: yes
+
+# - debug: var=ad_auth_pip_package_info
+
+# - fail:
+
+# - name: install pip packages
+#   ansible.builtin.pip:
+#     name: "{{ ad_auth_pip_packages }}"
+#     state: present
+#     extra_args: --ignore-installed
+    # when:
+    #   - packages['pexpect'] is not defined or
+    #     packages['pexpect'][0].version is version('3.3', '<=')
+    #   - "'pexpect' not in ad_auth_pip_package_info.stdout_lines"
+
+# - debug: var=ad_auth_pip_package_info
+# - fail:
 
 - name: configure nsswitch to use sss
   ansible.builtin.lineinfile:

@@ -3,6 +3,9 @@
   hosts: all
   become: yes
   gather_facts: no
+  vars:
+    python_pip_modules:
+      - name: pexpect
 
   roles:
     - role: buluma.bootstrap

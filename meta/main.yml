@@ -17,4 +17,7 @@ galaxy_info:
     - activedirectory
     - authentication
 
-dependencies: []
+dependencies:
+  - src: buluma.python_pip
+    version: 1.0.7
+    name: buluma.python_pip

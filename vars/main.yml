@@ -1,15 +1,45 @@
 ---
 # vars file for ad_auth
 
-ad_auth_packages:
-  - adcli
-  - oddjob
-  - oddjob-mkhomedir
-  - pam_krb5
-  - realmd
-  - samba-common
-  - samba-common-tools
-  - sssd
+_ad_auth_packages:
+  RedHat-7:
+    - adcli
+    - oddjob
+    - oddjob-mkhomedir
+    - pam_krb5
+    - realmd
+    - samba-common
+    - samba-common-tools
+    - sssd
+  RedHat-8:
+    - adcli
+    - oddjob
+    - oddjob-mkhomedir
+    - krb5-workstation
+    - realmd
+    - samba-common
+    - samba-common-tools
+    - sssd
+  RedHat-9:
+    - adcli
+    - oddjob
+    - oddjob-mkhomedir
+    - krb5-workstation
+    - realmd
+    - samba-common
+    - samba-common-tools
+    - sssd
+ad_auth_packages: "{{ _ad_auth_packages[ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_ad_auth_packages[ansible_os_family] | default(_ad_auth_packages['default'] )) }}"
+
+# ad_auth_packages:
+#   - adcli
+#   - oddjob
+#   - oddjob-mkhomedir
+#   - pam_krb5
+#   - realmd
+#   - samba-common
+#   - samba-common-tools
+#   - sssd
 
 ad_auth_pip_packages:
   - pexpect
