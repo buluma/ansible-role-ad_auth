@@ -14,8 +14,8 @@ lint: |
 driver:
   name: docker
 platforms:
-  - name: "adauth-${image:-fedora}-${tag:-latest}${TOX_ENVNAME}"
-    image: "${namespace:-buluma}/${image:-fedora}:${tag:-latest}"
+  - name: "ad_auth-${image:-docker-ubuntu2004-ansible}-${tag:-latest}${TOX_ENVNAME}"
+    image: "${namespace:-buluma}/${image:-docker-ubuntu2004-ansible}:${tag:-latest}"
     command: /sbin/init
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
@@ -24,6 +24,56 @@ platforms:
     tty: true
     environment:
       container: docker
+  # - name: "ad_auth-${image:-fedora}-${tag:-latest}${TOX_ENVNAME}"
+  #   image: "${namespace:-buluma}/${image:-fedora}:${tag:-latest}"
+  #   command: /sbin/init
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  #   privileged: yes
+  #   pre_build_image: yes
+  #   tty: true
+  #   environment:
+  #     container: docker
+  # - name: "ad_auth-${image:-docker-centos8-ansible}-${tag:-latest}${TOX_ENVNAME}"
+  #   image: "${namespace:-buluma}/${image:-docker-centos8-ansible}:${tag:-latest}"
+  #   command: /sbin/init
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  #   privileged: yes
+  #   pre_build_image: yes
+  #   tty: true
+  #   environment:
+  #     container: docker
+  # - name: "ad_auth-${image:-oraclelinux}-${tag:-9}${TOX_ENVNAME}"
+  #   image: "${namespace:-buluma}/${image:-oraclelinux}:${tag:-9}"
+  #   command: /sbin/init
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  #   privileged: yes
+  #   pre_build_image: yes
+  #   tty: true
+  #   environment:
+  #     container: docker
+  # - name: "ad_auth-${image:-oraclelinux}-${tag:-8}${TOX_ENVNAME}"
+  #   image: "${namespace:-buluma}/${image:-oraclelinux}:${tag:-8}"
+  #   command: /sbin/init
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  #   privileged: yes
+  #   pre_build_image: yes
+  #   tty: true
+  #   environment:
+  #     container: docker
+  # - name: "ad_auth-${image:-oraclelinux}-${tag:-7}${TOX_ENVNAME}"
+  #   image: "${namespace:-buluma}/${image:-oraclelinux}:${tag:-7}"
+  #   command: /sbin/init
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  #   privileged: yes
+  #   pre_build_image: yes
+  #   tty: true
+  #   environment:
+  #     container: docker
 provisioner:
   name: ansible
   config_options:
