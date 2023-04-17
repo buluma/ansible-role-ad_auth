@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/buluma/ansible-role-ad_auth/tree/HEAD)
+
+[Full Changelog](https://github.com/buluma/ansible-role-ad_auth/compare/0.1.3...HEAD)
+
+**Merged pull requests:**
+
+- Bump buluma/molecule-action from 5.0.1 to 5.0.4 [\#4](https://github.com/buluma/ansible-role-ad_auth/pull/4) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [0.1.3](https://github.com/buluma/ansible-role-ad_auth/tree/0.1.3) (2022-08-23)
 
 [Full Changelog](https://github.com/buluma/ansible-role-ad_auth/compare/0.1.2...0.1.3)
