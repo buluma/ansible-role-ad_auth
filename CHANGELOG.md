@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.3](https://github.com/buluma/ansible-role-ad_auth/tree/0.1.3) (2022-08-23)
+
+[Full Changelog](https://github.com/buluma/ansible-role-ad_auth/compare/0.1.2...0.1.3)
+
 ## [0.1.2](https://github.com/buluma/ansible-role-ad_auth/tree/0.1.2) (2022-07-31)
 
 [Full Changelog](https://github.com/buluma/ansible-role-ad_auth/compare/fa667e387305c49f58cff6332222e05c27b84f58...0.1.2)
