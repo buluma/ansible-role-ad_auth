@@ -1,10 +1,10 @@
-# [Ansible role ad_auth](#ad_auth)
+# Ansible role [ad_auth](https://galaxy.ansible.com/ui/standalone/roles/buluma/ad_auth/documentation)
 
 Bind a system to Active Directory.
 
-|GitHub|Version|Issues|Pull Requests|
-|------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-ad_auth/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-ad_auth/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-ad_auth.svg)](https://github.com/buluma/ansible-role-ad_auth/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-ad_auth.svg)](https://github.com/buluma/ansible-role-ad_auth/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-ad_auth.svg)](https://github.com/buluma/ansible-role-ad_auth/pulls/)|
+|GitHub|Version|Issues|Pull Requests|Downloads|
+|------|-------|------|-------------|---------|
+|[![github](https://github.com/buluma/ansible-role-ad_auth/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-ad_auth/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-ad_auth.svg)](https://github.com/buluma/ansible-role-ad_auth/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-ad_auth.svg)](https://github.com/buluma/ansible-role-ad_auth/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-ad_auth.svg)](https://github.com/buluma/ansible-role-ad_auth/pulls/)|[![Ansible Role](https://img.shields.io/ansible/role/d/buluma/ad_auth)](https://galaxy.ansible.com/ui/standalone/roles/buluma/ad_auth/documentation)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -139,9 +139,7 @@ If you find issues, please register them in [GitHub](https://github.com/buluma/a
 
 ## [Author Information](#author-information)
 
-[buluma](https://buluma.github.io/)
+[Shadow Walker](https://buluma.github.io/)
 
-
-### [Special Thanks](#special-thanks)
 
 Template inspired by [Robert de Bock](https://github.com/robertdebock)
