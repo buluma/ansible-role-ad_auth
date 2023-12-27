@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/buluma/ansible-role-ad_auth/compare/0.1.3...HEAD)
 
+**Closed issues:**
+
+- Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#11](https://github.com/buluma/ansible-role-ad_auth/issues/11)
+
 **Merged pull requests:**
 
 - Bump buluma/molecule-action from 5.0.1 to 5.0.4 [\#4](https://github.com/buluma/ansible-role-ad_auth/pull/4) ([dependabot[bot]](https://github.com/apps/dependabot))
