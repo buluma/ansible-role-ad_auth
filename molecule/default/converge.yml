@@ -1,8 +1,8 @@
 ---
 - name: Converge
   hosts: all
-  become: yes
-  gather_facts: yes
+  become: true
+  gather_facts: true
 
   roles:
     - role: ansible-role-ad_auth
@@ -11,7 +11,7 @@
       ad_auth_ou: ou=Nerds,ou=Staff
       ad_auth_server: my_server.example.com
       ad_auth_domain: my_domain.local
-      ad_auth_join: no
+      ad_auth_join: false
       ad_auth_simple_allow_users:
         - my_user_1
         - my_user_2

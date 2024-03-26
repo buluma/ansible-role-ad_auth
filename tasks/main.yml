@@ -3,7 +3,7 @@
 
 - name: include assert.yml
   ansible.builtin.import_tasks: assert.yml
-  run_once: yes
+  run_once: true
   delegate_to: localhost
   # tags:
   #   - molecule-notest
@@ -24,22 +24,22 @@
 
 # - name: gather pip packages (CentOS-7)
 #   ansible.builtin.command: pip list
-#   check_mode: no
-#   changed_when: no
+#   check_mode: false
+#   changed_when: false
 #   register: ad_auth_pip_package_info
 #   when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7")
 #
 # - name: gather pip packages (CentOS-8)
 #   ansible.builtin.command: pip3 list
-#   check_mode: no
-#   changed_when: no
+#   check_mode: false
+#   changed_when: false
 #   register: ad_auth_pip_package_info
 #   when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "8")
 
 # - name: gather pip packages (OracleLinux-7)
 #   ansible.builtin.command: pip list
-#   check_mode: no
-#   changed_when: no
+#   check_mode: false
+#   changed_when: false
 #   register: ad_auth_pip_package_info_7
 #   when: (ansible_facts['distribution'] == "OracleLinux" and ansible_facts['distribution_major_version'] == "7")
 #
@@ -47,8 +47,8 @@
 #
 # - name: gather pip packages (OracleLinux-8)
 #   ansible.builtin.command: pip3 list
-#   check_mode: no
-#   changed_when: no
+#   check_mode: false
+#   changed_when: false
 #   register: ad_auth_pip_package_info_8
 #   when: (ansible_facts['distribution'] == "OracleLinux" and ansible_facts['distribution_major_version'] == "8")
 #
@@ -56,8 +56,8 @@
 #
 # - name: gather pip packages (OracleLinux-9)
 #   ansible.builtin.command: pip3 list
-#   check_mode: no
-#   changed_when: no
+#   check_mode: false
+#   changed_when: false
 #   register: ad_auth_pip_package_info_9
 #   when: (ansible_facts['distribution'] == "OracleLinux" and ansible_facts['distribution_major_version'] == "9")
 
@@ -66,7 +66,7 @@
 # - name: install pexpect
 #   pip:
 #     name: pexpect
-#   become: yes
+#   become: true
 
 # - debug: var=ad_auth_pip_package_info
 
@@ -89,7 +89,7 @@
   ansible.builtin.lineinfile:
     path: /etc/nsswitch.conf
     regexp: "^{{ item }}:"
-    line: "{{ item }}:\tfiles sss"  # noqa: no-tabs
+    line: "{{ item }}:\tfiles sss"  # noqa: false-tabs
     mode: "0644"
   loop: "{{ ad_auth_nsswich_maps }}"
 

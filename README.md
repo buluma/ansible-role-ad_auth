@@ -14,8 +14,8 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 ---
 - name: Converge
   hosts: all
-  become: yes
-  gather_facts: yes
+  become: true
+  gather_facts: true
 
   roles:
     - role: buluma.ad_auth
@@ -24,7 +24,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
       ad_auth_ou: ou=Nerds,ou=Staff
       ad_auth_server: my_server.example.com
       ad_auth_domain: my_domain.local
-      ad_auth_join: no
+      ad_auth_join: false
       ad_auth_simple_allow_users:
         - my_user_1
         - my_user_2
@@ -36,8 +36,8 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 ---
 - name: Prepare
   hosts: all
-  become: yes
-  gather_facts: no
+  become: true
+  gather_facts: false
   vars:
     python_pip_modules:
       - name: pexpect
@@ -75,7 +75,7 @@ ad_auth_domain: "usnet.local"
 
 # Should this role try to bind to the AD server?
 # (This can be unset for automated testing)
-ad_auth_join: yes
+ad_auth_join: true
 
 # To limit selected users to login, fill this list with users that are
 # allowed to login:
