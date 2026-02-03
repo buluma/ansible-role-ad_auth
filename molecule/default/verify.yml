@@ -6,10 +6,13 @@
 
   tasks:
     - name: check adcli
-      command: /usr/sbin/adcli --help
+      ansible.builtin.command: /usr/sbin/adcli --help
+      changed_when: false
 
     - name: check realmd
-      command: /usr/sbin/realm list
+      ansible.builtin.command: /usr/sbin/realm list
+      changed_when: false
 
     - name: check samba common tools
-      command: /usr/bin/net --version
+      ansible.builtin.command: /usr/bin/net --version
+      changed_when: false

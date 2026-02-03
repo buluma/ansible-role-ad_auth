@@ -100,9 +100,11 @@ The following roles are used to prepare a system. You can prepare your system in
 
 ## [Dependencies](#dependencies)
 
-Most roles require some kind of preparation, this is done in `molecule/default/prepare.yml`. This role has a "hard" dependency on the following roles:
+Most roles require some kind of preparation, this is done in `molecule/default/prepare.yml`. This role itself does not declare any hard role dependencies. The following roles are used there as an example to prepare the system (you may prepare your system in another way, or with other roles):
 
-- {'src': 'buluma.python_pip', 'version': '1.0.7', 'name': 'buluma.python_pip'}
+- buluma.bootstrap
+- buluma.epel
+- buluma.python_pip
 
 ## [Context](#context)
 
