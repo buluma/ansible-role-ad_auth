@@ -1,14 +1,14 @@
 ---
 # handlers file for ad_auth
 
-- name: restart realmd
+- name: Restart realmd service
   ansible.builtin.systemd:
     name: realmd
     state: restarted
   when:
     - not ansible_check_mode | bool
 
-- name: restart sssd
+- name: Restart sssd service
   ansible.builtin.systemd:
     name: sssd
     state: restarted
