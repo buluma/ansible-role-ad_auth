@@ -7,6 +7,8 @@
 **Closed issues:**
 
 - Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#11](https://github.com/buluma/ansible-role-ad_auth/issues/11)
+- Update action [\#10](https://github.com/buluma/ansible-role-ad_auth/issues/10)
+- rebuild action [\#9](https://github.com/buluma/ansible-role-ad_auth/issues/9)
 
 **Merged pull requests:**
 
