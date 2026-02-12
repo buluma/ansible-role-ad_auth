@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/buluma/ansible-role-ad_auth/tree/HEAD)
+## [0.2.0](https://github.com/buluma/ansible-role-ad_auth/tree/0.2.0) (2026-02-03)
 
-[Full Changelog](https://github.com/buluma/ansible-role-ad_auth/compare/0.1.3...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-ad_auth/compare/0.1.3...0.2.0)
 
 **Closed issues:**
 
