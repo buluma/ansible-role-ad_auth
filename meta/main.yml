@@ -2,11 +2,10 @@
 galaxy_info:
   author: buluma
   role_name: ad_auth
-  description: Bind a system to Active Directory.
+  description: 'Bind a system to Active Directory.'
   license: Apache-2.0
   company: none
-  min_ansible_version: "2.12"
-
+  min_ansible_version: 2.12
   platforms:
     - name: EL
       versions:
@@ -14,10 +13,8 @@ galaxy_info:
     - name: Fedora
       versions:
         - all
-
   galaxy_tags:
     - adauth
     - activedirectory
     - authentication
-
 dependencies: []
