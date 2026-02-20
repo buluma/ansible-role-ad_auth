@@ -38,7 +38,8 @@ _ad_auth_packages:
     - samba-common
     - samba-common-tools
     - sssd
-ad_auth_packages: "{{ _ad_auth_packages[ansible_os_family ~ '-' ~ ansible_distribution_major_version] |
+ad_auth_packages:
+  "{{ _ad_auth_packages[ansible_os_family ~ '-' ~ ansible_distribution_major_version] |
   default(_ad_auth_packages[ansible_os_family] |
   default(_ad_auth_packages['default'] )) }}"
 
@@ -98,19 +99,19 @@ ad_auth_sssd_configuration:
     value: manages-system joined-with-samba
   - option: cache_credentials
     section: domain/{{ ad_auth_domain }}
-    value: 'True'
+    value: "True"
   - option: id_provider
     section: domain/{{ ad_auth_domain }}
     value: ad
   - option: krb5_store_password_if_offline
     section: domain/{{ ad_auth_domain }}
-    value: 'True'
+    value: "True"
   - option: default_shell
     section: domain/{{ ad_auth_domain }}
     value: /bin/bash
   - option: ldap_id_mapping
     section: domain/{{ ad_auth_domain }}
-    value: 'True'
+    value: "True"
   - option: fallback_homedir
     section: domain/{{ ad_auth_domain }}
     value: /home/%u
@@ -119,10 +120,10 @@ ad_auth_sssd_configuration:
     value: simple
   - option: ignore_group_members
     section: domain/{{ ad_auth_domain }}
-    value: 'True'
+    value: "True"
   - option: use_fully_qualified_names
     section: domain/{{ ad_auth_domain }}
-    value: 'True'
+    value: "True"
 
 ad_auth_pam_files:
   - system-auth

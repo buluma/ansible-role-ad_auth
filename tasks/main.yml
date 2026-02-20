@@ -89,7 +89,7 @@
   ansible.builtin.lineinfile:
     path: /etc/nsswitch.conf
     regexp: "^{{ item }}:"
-    line: "{{ item }}:\tfiles sss"  # noqa: false-tabs
+    line: "{{ item }}:\tfiles sss" # noqa: false-tabs
     mode: "0644"
   loop: "{{ ad_auth_nsswich_maps }}"
 
