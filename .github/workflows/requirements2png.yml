@@ -1,3 +1,4 @@
+
 ---
 #
 # Ansible managed
@@ -9,7 +10,7 @@ on:
       - master
       - main
     paths:
-      - ".github/workflows/requirements2png.yml"
+      - '.github/workflows/requirements2png.yml'
   release:
     types:
       - published
