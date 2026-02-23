@@ -11,6 +11,7 @@ Bind a system to Active Directory.
 This example is taken from [`molecule/default/converge.yml`](https://github.com/buluma/ansible-role-ad_auth/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
 
 ```yaml
+---
   - name: Converge
     hosts: all
     become: true
@@ -32,6 +33,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-ad_auth/blob/master/molecule/default/prepare.yml):
 
 ```yaml
+---
   - name: Prepare
     hosts: all
     become: true
@@ -53,6 +55,7 @@ Also see a [full explanation and example](https://buluma.github.io/how-to-use-th
 The default values for the variables are set in [`defaults/main.yml`](https://github.com/buluma/ansible-role-ad_auth/blob/master/defaults/main.yml):
 
 ```yaml
+---
 # defaults file for ad_auth
 
 # The username to register to AD, for example: "bind_user".
