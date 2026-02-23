@@ -12,40 +12,40 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
 ```yaml
 ---
-  - name: Converge
-    hosts: all
-    become: true
-    gather_facts: true
+- name: Converge
+  hosts: all
+  become: true
+  gather_facts: true
 
-    roles:
-      - role: buluma.ad_auth
-        ad_auth_registration_username: my_username
-        ad_auth_registration_password: my_password
-        ad_auth_ou: ou=Nerds,ou=Staff
-        ad_auth_server: my_server.example.com
-        ad_auth_domain: my_domain.local
-        ad_auth_join: false
-        ad_auth_simple_allow_users:
-          - my_user_1
-          - my_user_2
+  roles:
+  - role: buluma.ad_auth
+    ad_auth_registration_username: my_username
+    ad_auth_registration_password: my_password
+    ad_auth_ou: ou=Nerds,ou=Staff
+    ad_auth_server: my_server.example.com
+    ad_auth_domain: my_domain.local
+    ad_auth_join: false
+    ad_auth_simple_allow_users:
+    - my_user_1
+    - my_user_2
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-ad_auth/blob/master/molecule/default/prepare.yml):
 
 ```yaml
 ---
-  - name: Prepare
-    hosts: all
-    become: true
-    gather_facts: false
-    vars:
-      python_pip_modules:
-        - name: pexpect
+- name: Prepare
+  hosts: all
+  become: true
+  gather_facts: false
+  vars:
+    python_pip_modules:
+    - name: pexpect
 
-    roles:
-      - role: buluma.bootstrap
-      - role: buluma.epel
-      - role: buluma.python_pip
+  roles:
+  - role: buluma.bootstrap
+  - role: buluma.epel
+  - role: buluma.python_pip
 ```
 
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
