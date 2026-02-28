@@ -1,55 +1,59 @@
-# [ad_auth](#ad_auth)
+# [Ansible role ad_auth](#ansible-role-ad_auth)
 
 Bind a system to Active Directory.
 
-|GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
-|------|------|-------|---------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-ad_auth/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-ad_auth/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-ad_auth/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-ad_auth)|[![quality](https://img.shields.io/ansible/quality/58349)](https://galaxy.ansible.com/buluma/ad_auth)|[![downloads](https://img.shields.io/ansible/role/d/58349)](https://galaxy.ansible.com/buluma/ad_auth)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-ad_auth.svg)](https://github.com/buluma/ansible-role-ad_auth/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-ad_auth.svg)](https://github.com/buluma/ansible-role-ad_auth/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-ad_auth.svg)](https://github.com/buluma/ansible-role-ad_auth/pulls/)|
+|GitHub|GitLab|Downloads|Version|
+|------|------|---------|-------|
+|[![github](https://github.com/buluma/ansible-role-ad_auth/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-ad_auth/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-ad_auth/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-ad_auth)|[![downloads](https://img.shields.io/ansible/role/d/buluma/ad_auth)](https://galaxy.ansible.com/buluma/ad_auth)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-ad_auth.svg)](https://github.com/buluma/ansible-role-ad_auth/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
-This example is taken from `molecule/default/converge.yml` and is tested on each push, pull request and release.
+This example is taken from [`molecule/default/converge.yml`](https://github.com/buluma/ansible-role-ad_auth/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
+
 ```yaml
 ---
-- name: converge
+- name: Converge
   hosts: all
-  become: yes
-  gather_facts: yes
+  become: true
+  gather_facts: true
 
   roles:
-    - role: buluma.ad_auth
-      ad_auth_registration_username: my_username
-      ad_auth_registration_password: my_password
-      ad_auth_ou: ou=Nerds,ou=Staff
-      ad_auth_server: my_server.example.com
-      ad_auth_domain: my_domain.local
-      ad_auth_join: no
-      ad_auth_simple_allow_users:
-        - my_user_1
-        - my_user_2
+  - role: buluma.ad_auth
+    ad_auth_registration_username: my_username
+    ad_auth_registration_password: my_password
+    ad_auth_ou: ou=Nerds,ou=Staff
+    ad_auth_server: my_server.example.com
+    ad_auth_domain: my_domain.local
+    ad_auth_join: false
+    ad_auth_simple_allow_users:
+    - my_user_1
+    - my_user_2
 ```
 
-The machine needs to be prepared. In CI this is done using `molecule/default/prepare.yml`:
+The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-ad_auth/blob/master/molecule/default/prepare.yml):
+
 ```yaml
 ---
-- name: prepare
+- name: Prepare
   hosts: all
-  become: yes
-  gather_facts: no
+  become: true
+  gather_facts: false
   vars:
     python_pip_modules:
-      - name: pexpect
+    - name: pexpect
 
   roles:
-    - role: buluma.bootstrap
-    - role: buluma.epel
-    - role: buluma.python_pip
+  - role: buluma.bootstrap
+  - role: buluma.epel
+  - role: buluma.python_pip
 ```
 
+Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
 
 ## [Role Variables](#role-variables)
 
-The default values for the variables are set in `defaults/main.yml`:
+The default values for the variables are set in [`defaults/main.yml`](https://github.com/buluma/ansible-role-ad_auth/blob/master/defaults/main.yml):
+
 ```yaml
 ---
 # defaults file for ad_auth
@@ -71,7 +75,7 @@ ad_auth_domain: "usnet.local"
 
 # Should this role try to bind to the AD server?
 # (This can be unset for automated testing)
-ad_auth_join: yes
+ad_auth_join: true
 
 # To limit selected users to login, fill this list with users that are
 # allowed to login:
@@ -82,29 +86,23 @@ ad_auth_join: yes
 
 ## [Requirements](#requirements)
 
-- pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-ad_auth/blob/main/requirements.txt).
+- pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-ad_auth/blob/master/requirements.txt).
 
-## [Status of used roles](#status-of-requirements)
+## [State of used roles](#state-of-used-roles)
 
 The following roles are used to prepare a system. You can prepare your system in another way.
 
 | Requirement | GitHub | GitLab |
 |-------------|--------|--------|
-|[buluma.bootstrap](https://galaxy.ansible.com/buluma/bootstrap)|[![Build Status GitHub](https://github.com/buluma/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-bootstrap/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-bootstrap)|
-|[buluma.epel](https://galaxy.ansible.com/buluma/epel)|[![Build Status GitHub](https://github.com/buluma/ansible-role-epel/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-epel/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-epel/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-epel)|
-|[buluma.python_pip](https://galaxy.ansible.com/buluma/python_pip)|[![Build Status GitHub](https://github.com/buluma/ansible-role-python_pip/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-python_pip/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-python_pip/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-python_pip)|
+|[buluma.bootstrap](https://galaxy.ansible.com/buluma/bootstrap)|[![Build Status GitHub](https://github.com/buluma/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-bootstrap/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-bootstrap)|
+|[buluma.epel](https://galaxy.ansible.com/buluma/epel)|[![Build Status GitHub](https://github.com/buluma/ansible-role-epel/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-epel/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-epel/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-epel)|
+|[buluma.python_pip](https://galaxy.ansible.com/buluma/python_pip)|[![Build Status GitHub](https://github.com/buluma/ansible-role-python_pip/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-python_pip/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-python_pip/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-python_pip)|
 
-## [Dependencies](#dependencies)
-
-Most roles require some kind of preparation, this is done in `molecule/default/prepare.yml`. This role has a "hard" dependency on the following roles:
-
-- {'src': 'buluma.python_pip', 'version': '1.0.7', 'name': 'buluma.python_pip'}
 ## [Context](#context)
 
-This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://buluma.github.io/) for further information.
+This role is part of many compatible roles. Have a look at [the documentation of these roles](https://buluma.github.io/) for further information.
 
 Here is an overview of related roles:
-
 ![dependencies](https://raw.githubusercontent.com/buluma/ansible-role-ad_auth/png/requirements.png "Dependencies")
 
 ## [Compatibility](#compatibility)
@@ -113,27 +111,22 @@ This role has been tested on these [container images](https://hub.docker.com/u/b
 
 |container|tags|
 |---------|----|
-|el|all|
-|fedora|all|
+|[EL](https://hub.docker.com/r/buluma/enterpriselinux)|all|
+|[Fedora](https://hub.docker.com/r/buluma/fedora)|all|
 
-The minimum version of Ansible required is 2.10, tests have been done to:
+The minimum version of Ansible required is 2.12, tests have been done on:
 
 - The previous version.
 - The current version.
 - The development version.
 
-
-
-If you find issues, please register them in [GitHub](https://github.com/buluma/ansible-role-ad_auth/issues)
-
-## [Changelog](#changelog)
-
-[Role History](https://github.com/buluma/ansible-role-ad_auth/blob/master/CHANGELOG.md)
+If you find issues, please register them on [GitHub](https://github.com/buluma/ansible-role-ad_auth/issues).
 
 ## [License](#license)
 
-Apache-2.0
+[Apache-2.0](https://github.com/buluma/ansible-role-ad_auth/blob/master/LICENSE).
 
 ## [Author Information](#author-information)
 
 [buluma](https://buluma.github.io/)
+

@@ -1,14 +1,14 @@
 ---
 # tasks file for ad_auth
 
-- name: include assert.yml
+- name: Include assert.yml
   ansible.builtin.import_tasks: assert.yml
-  run_once: yes
+  run_once: true
   delegate_to: localhost
   # tags:
   #   - molecule-notest
 
-- name: install packages
+- name: Install packages
   ansible.builtin.package:
     name: "{{ ad_auth_packages }}"
     state: present
@@ -24,22 +24,22 @@
 
 # - name: gather pip packages (CentOS-7)
 #   ansible.builtin.command: pip list
-#   check_mode: no
-#   changed_when: no
+#   check_mode: false
+#   changed_when: false
 #   register: ad_auth_pip_package_info
 #   when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7")
 #
 # - name: gather pip packages (CentOS-8)
 #   ansible.builtin.command: pip3 list
-#   check_mode: no
-#   changed_when: no
+#   check_mode: false
+#   changed_when: false
 #   register: ad_auth_pip_package_info
 #   when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "8")
 
 # - name: gather pip packages (OracleLinux-7)
 #   ansible.builtin.command: pip list
-#   check_mode: no
-#   changed_when: no
+#   check_mode: false
+#   changed_when: false
 #   register: ad_auth_pip_package_info_7
 #   when: (ansible_facts['distribution'] == "OracleLinux" and ansible_facts['distribution_major_version'] == "7")
 #
@@ -47,8 +47,8 @@
 #
 # - name: gather pip packages (OracleLinux-8)
 #   ansible.builtin.command: pip3 list
-#   check_mode: no
-#   changed_when: no
+#   check_mode: false
+#   changed_when: false
 #   register: ad_auth_pip_package_info_8
 #   when: (ansible_facts['distribution'] == "OracleLinux" and ansible_facts['distribution_major_version'] == "8")
 #
@@ -56,8 +56,8 @@
 #
 # - name: gather pip packages (OracleLinux-9)
 #   ansible.builtin.command: pip3 list
-#   check_mode: no
-#   changed_when: no
+#   check_mode: false
+#   changed_when: false
 #   register: ad_auth_pip_package_info_9
 #   when: (ansible_facts['distribution'] == "OracleLinux" and ansible_facts['distribution_major_version'] == "9")
 
@@ -66,13 +66,13 @@
 # - name: install pexpect
 #   pip:
 #     name: pexpect
-#   become: yes
+#   become: true
 
 # - debug: var=ad_auth_pip_package_info
 
 # - fail:
 
-# - name: install pip packages
+# - name: Install pip packages
 #   ansible.builtin.pip:
 #     name: "{{ ad_auth_pip_packages }}"
 #     state: present
@@ -85,15 +85,15 @@
 # - debug: var=ad_auth_pip_package_info
 # - fail:
 
-- name: configure nsswitch to use sss
+- name: Configure nsswitch to use sss
   ansible.builtin.lineinfile:
     path: /etc/nsswitch.conf
     regexp: "^{{ item }}:"
-    line: "{{ item }}:\tfiles sss"  # noqa: no-tabs
+    line: "{{ item }}:\tfiles sss" # noqa: false-tabs
     mode: "0644"
   loop: "{{ ad_auth_nsswich_maps }}"
 
-- name: join domain
+- name: Join domain
   ansible.builtin.expect:
     command: "{{ ad_auth_join_command }}"
     responses:
@@ -101,7 +101,7 @@
   when:
     - ad_auth_join | bool
 
-- name: configure sssd to work with nss
+- name: Configure sssd to work with nss
   community.general.ini_file:
     path: /etc/sssd/sssd.conf
     section: "{{ item.section }}"
@@ -114,27 +114,27 @@
   notify:
     - restart sssd
 
-- name: limit login to selected users
+- name: Limit login to selected users
+  when:
+    - ad_auth_simple_allow_users is defined
+    - ad_auth_simple_allow_users | length > 0
   block:
-    - name: enable simple provider
+    - name: Enable simple provider
       community.general.ini_file:
         path: /etc/sssd/sssd.conf
         section: "domain/{{ ad_auth_domain }}"
         option: access_provider
         value: "simple"
         mode: *sssd_conf_mode
-    - name: limit login to selected users
+    - name: Limit login to selected users
       community.general.ini_file:
         path: /etc/sssd/sssd.conf
         section: "domain/{{ ad_auth_domain }}"
         option: simple_allow_users
         value: "{{ ad_auth_simple_allow_users | join(', ') }}"
         mode: *sssd_conf_mode
-  when:
-    - ad_auth_simple_allow_users is defined
-    - ad_auth_simple_allow_users | length > 0
 
-- name: configure pam to use sssd
+- name: Configure pam to use sssd
   community.general.pamd:
     name: "{{ item }}"
     type: auth
@@ -147,7 +147,7 @@
     state: before
   loop: "{{ ad_auth_pam_files }}"
 
-- name: start services
+- name: Start services
   ansible.builtin.service:
     name: "{{ item }}"
     state: started

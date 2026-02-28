@@ -2,7 +2,22 @@
 
 ## [Unreleased](https://github.com/buluma/ansible-role-ad_auth/tree/HEAD)
 
-[Full Changelog](https://github.com/buluma/ansible-role-ad_auth/compare/0.1.3...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-ad_auth/compare/0.2.0...HEAD)
+
+**Merged pull requests:**
+
+- Bump buluma/dependabot-auto-merge-action from 2.1.2 to 2.1.4 [\#14](https://github.com/buluma/ansible-role-ad_auth/pull/14) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/checkout from 4 to 6 [\#13](https://github.com/buluma/ansible-role-ad_auth/pull/13) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [0.2.0](https://github.com/buluma/ansible-role-ad_auth/tree/0.2.0) (2026-02-03)
+
+[Full Changelog](https://github.com/buluma/ansible-role-ad_auth/compare/0.1.3...0.2.0)
+
+**Closed issues:**
+
+- Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#11](https://github.com/buluma/ansible-role-ad_auth/issues/11)
+- Update action [\#10](https://github.com/buluma/ansible-role-ad_auth/issues/10)
+- rebuild action [\#9](https://github.com/buluma/ansible-role-ad_auth/issues/9)
 
 **Merged pull requests:**
 

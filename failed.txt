@@ -1,0 +1,5 @@
+ansible-role-ad_auth
+ansible-role-ad_auth
+ansible-role-ad_auth
+ansible-role-ad_auth
+ansible-role-ad_auth [generator]: ERROR: Unhandled exception when retrieving 'DEFAULT_LOCAL_TMP': [Errno 1] Operation not permitted: '/Users/shadowwalker/.ansible/tmp/ansible-local-81875ix56oayu'
