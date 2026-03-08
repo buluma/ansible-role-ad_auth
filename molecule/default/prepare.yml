@@ -5,9 +5,9 @@
   gather_facts: false
   vars:
     python_pip_modules:
-    - name: pexpect
+      - name: pexpect
 
   roles:
-  - role: buluma.bootstrap
-  - role: buluma.epel
-  - role: buluma.python_pip
+    - role: buluma.bootstrap
+    - role: buluma.epel
+    - role: buluma.python_pip

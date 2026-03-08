@@ -5,14 +5,14 @@
   gather_facts: false
 
   tasks:
-  - name: Check adcli
-    ansible.builtin.command: /usr/sbin/adcli --help
-    changed_when: false
+    - name: Check adcli
+      ansible.builtin.command: /usr/sbin/adcli --help
+      changed_when: false
 
-  - name: Check realmd
-    ansible.builtin.command: /usr/sbin/realm list
-    changed_when: false
+    - name: Check realmd
+      ansible.builtin.command: /usr/sbin/realm list
+      changed_when: false
 
-  - name: Check samba common tools
-    ansible.builtin.command: /usr/bin/net --version
-    changed_when: false
+    - name: Check samba common tools
+      ansible.builtin.command: /usr/bin/net --version
+      changed_when: false
