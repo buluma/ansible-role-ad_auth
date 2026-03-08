@@ -12,8 +12,7 @@
   ansible.builtin.package:
     name: "{{ ad_auth_packages }}"
     state: present
-  notify:
-    - restart realmd
+  notify: restart realmd
 
 # - debug: var=ansible_facts['distribution']
 # - debug: var=ansible_facts['distribution_major_version']
@@ -111,8 +110,7 @@
   loop: "{{ ad_auth_sssd_configuration }}"
   loop_control:
     label: "{{ item.option }}"
-  notify:
-    - restart sssd
+  notify: restart sssd
 
 - name: Limit login to selected users
   when:
