@@ -8,6 +8,7 @@
 
 - Bump buluma/dependabot-auto-merge-action from 2.1.2 to 2.1.4 [\#14](https://github.com/buluma/ansible-role-ad_auth/pull/14) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump actions/checkout from 4 to 6 [\#13](https://github.com/buluma/ansible-role-ad_auth/pull/13) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump buluma/molecule-action from 5.0.4 to 5.0.7 [\#8](https://github.com/buluma/ansible-role-ad_auth/pull/8) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [0.2.0](https://github.com/buluma/ansible-role-ad_auth/tree/0.2.0) (2026-02-03)
 
