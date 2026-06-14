@@ -39,7 +39,7 @@ _ad_auth_packages:
     - samba-common-tools
     - sssd
 ad_auth_packages:
-  "{{ _ad_auth_packages[ansible_facts.os_family ~ '-' ~ ansible_facts.distribution_major_version] | default(_ad_auth_packages[ansible_facts.os_family] | default(_ad_auth_packages['default']
+  "{{ _ad_auth_packages[ansible_facts['os_family'] ~ '-' ~ ansible_facts['distribution_major_version']] | default(_ad_auth_packages[ansible_facts['os_family']] | default(_ad_auth_packages['default']
   )) }}"
 
 # ad_auth_packages:
