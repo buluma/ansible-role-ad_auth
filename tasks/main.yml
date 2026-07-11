@@ -91,6 +91,8 @@
     line: "{{ item }}:\tfiles sss" # noqa: false-tabs
     mode: "0644"
   loop: "{{ ad_auth_nsswich_maps }}"
+  when:
+    - ad_auth_join | bool
 
 - name: Join domain
   ansible.builtin.expect:
