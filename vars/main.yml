@@ -132,9 +132,15 @@ ad_auth_sssd_configuration:
     section: domain/{{ ad_auth_domain }}
     value: "True"
 
-ad_auth_pam_files:
-  - system-auth
-  - password-auth
+_ad_auth_pam_files:
+  default:
+    - system-auth
+    - password-auth
+  # Debian's PAM stack has no system-auth/password-auth; common-auth
+  # is the single file included by services for the "auth" type.
+  Debian:
+    - common-auth
+ad_auth_pam_files: "{{ _ad_auth_pam_files[ansible_facts['os_family']] | default(_ad_auth_pam_files['default']) }}"
 
 ad_auth_services:
   - realmd
