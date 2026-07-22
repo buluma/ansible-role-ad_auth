@@ -38,6 +38,15 @@ _ad_auth_packages:
     - samba-common
     - samba-common-tools
     - sssd
+  Debian:
+    - adcli
+    - oddjob
+    - oddjob-mkhomedir
+    - krb5-user
+    - realmd
+    - samba-common
+    - samba-common-bin
+    - sssd
 ad_auth_packages: "{{ _ad_auth_packages[ansible_facts['os_family'] ~ '-' ~ ansible_facts['distribution_major_version']] | default(_ad_auth_packages[ansible_facts['os_family']]
   | default(_ad_auth_packages['default'] )) }}"
 
